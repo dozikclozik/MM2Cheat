@@ -1,12 +1,6 @@
 local lPlayer = game.Players.LocalPlayer
 local players = game.Players
 
-if game.PlaceId == 142823291 then
-	print("place correct")
-else
-	return
-end
-
 local screenGui = Instance.new("ScreenGui", lPlayer.PlayerGui) screenGui.Name = "GetInfoGui"
 	
 	local Murder_Frame = Instance.new("Frame", screenGui) Murder_Frame.Name = "Murder_Frame" local corner = Instance.new("UICorner", Murder_Frame)
@@ -67,7 +61,6 @@ textButton.TextColor = BrickColor.new("White")
 
 
 textButton.MouseButton1Click:Connect(function()
-	pcall(function()
 	for _, murdName in pairs(game:GetService("Players"):GetChildren()) do
 		if murdName.Backpack:FindFirstChild("Knife") or murdName.Character:FindFirstChild("Knife") then
 			local highLight = Instance.new("Highlight", murdName.Character)
@@ -78,9 +71,7 @@ textButton.MouseButton1Click:Connect(function()
 			imageMurder.Image = icon
 		end
 	end
-	end)
 	
-	pcall(function()
 	for _, sherName in pairs(game:GetService("Players"):GetChildren()) do
 		if sherName.Backpack:FindFirstChild("Gun") or sherName.Character:FindFirstChild("Gun") then
 			local highLight = Instance.new("Highlight", sherName.Character)
@@ -91,7 +82,6 @@ textButton.MouseButton1Click:Connect(function()
 			imageSheriff.Image = icon
 		end
 	end
-	end)
 end)
 
 
