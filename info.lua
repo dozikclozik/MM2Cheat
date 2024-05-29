@@ -1,6 +1,8 @@
 local lPlayer = game.Players.LocalPlayer
 local players = game.Players
 
+task.wait(5)
+
 local screenGui = Instance.new("ScreenGui", lPlayer.PlayerGui) screenGui.Name = "GetInfoGui"
 	
 	local Murder_Frame = Instance.new("Frame", screenGui) Murder_Frame.Name = "Murder_Frame" local corner = Instance.new("UICorner", Murder_Frame)
@@ -25,9 +27,6 @@ local imageMurder = Instance.new("ImageLabel" , Murder_Frame) imageMurder.Name =
 imageMurder.Size = UDim2.new(0.307, 0,0.974, 0)
 imageMurder.Position = UDim2.new(-0.348, 0,0, 0)
 
-
-
-
 local Sheriff_Frame = Instance.new("Frame", screenGui) Sheriff_Frame.Name = "Sheriff_Frame" local corner = Instance.new("UICorner", Sheriff_Frame)
 Sheriff_Frame.Size = UDim2.new(0.153, 0,0.123, 0)
 Sheriff_Frame.Position = UDim2.new(0.546, 0,0, 0)
@@ -50,7 +49,6 @@ local imageSheriff = Instance.new("ImageLabel" , Sheriff_Frame) imageSheriff.Nam
 imageSheriff.Size = UDim2.new(0.307, 0,0.974, 0)
 imageSheriff.Position = UDim2.new(1.045, 0,0.013, 0)
 
-
 local textButton = Instance.new("TextButton", screenGui) textButton.Name = "GetInfo" local uiCorner = Instance.new("UICorner", textButton)
 textButton.Text = "GetInfo"
 textButton.BackgroundColor = BrickColor.new("Black")
@@ -58,7 +56,6 @@ textButton.TextScaled = true
 textButton.Size = UDim2.new(0.125, 0,0.08, 0)
 textButton.Position = UDim2.new(0.414, 0,0.01, 0)
 textButton.TextColor = BrickColor.new("White")
-
 
 textButton.MouseButton1Click:Connect(function()
 	for _, murdName in pairs(game:GetService("Players"):GetChildren()) do
@@ -83,10 +80,3 @@ textButton.MouseButton1Click:Connect(function()
 		end
 	end
 end)
-
-
-
-
-
-
-
