@@ -1,7 +1,7 @@
 local lPlayer = game.Players.LocalPlayer
 local players = game.Players
 
-task.wait(5)
+task.wait(3)
 
 local screenGui = Instance.new("ScreenGui", lPlayer.PlayerGui) screenGui.Name = "GetInfoGui"
 	
@@ -49,7 +49,7 @@ local imageSheriff = Instance.new("ImageLabel" , Sheriff_Frame) imageSheriff.Nam
 imageSheriff.Size = UDim2.new(0.307, 0,0.974, 0)
 imageSheriff.Position = UDim2.new(1.045, 0,0.013, 0)
 
-local textButton = Instance.new("TextButton", screenGui) textButton.Name = "GetInfo" local uiCorner = Instance.new("UICorner", textButton)
+local textButton = Instance.new("TextButton", screenGui) textButton.Name = "Get information" local uiCorner = Instance.new("UICorner", textButton)
 textButton.Text = "GetInfo"
 textButton.BackgroundColor = BrickColor.new("Black")
 textButton.TextScaled = true
@@ -58,14 +58,29 @@ textButton.Position = UDim2.new(0.414, 0,0.01, 0)
 textButton.TextColor = BrickColor.new("White")
 
 textButton.MouseButton1Click:Connect(function()
+	
+	for _, ALLplayers in pairs(game.Players:GetPlayers()) do
+		local characters = ALLplayers.Character
+		if not ALLplayers.Backpack:FindFirstChild("Knife") or not characters:FindFirstChild("Knife")
+			and not ALLplayers.Backpack:FindFirstChild("Gun") or not characters:FindFirstChild("Gun") then
+			local highlight = Instance.new("Highlight", characters)
+			highlight.FillColor = Color3.new(0.0156863, 1, 0)
+		end
+	end
+	
 	for _, murdName in pairs(game:GetService("Players"):GetChildren()) do
 		if murdName.Backpack:FindFirstChild("Knife") or murdName.Character:FindFirstChild("Knife") then
 			local highLight = Instance.new("Highlight", murdName.Character)
 			highLight.FillColor = Color3.new(1, 0, 0)
+		
+			
 			
 			PlayerName.Text = murdName.Name
 			local icon = players:GetUserThumbnailAsync(murdName.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
 			imageMurder.Image = icon
+		elseif lPlayer.Character:FindFirstChild("Gun") or lPlayer.Backpack:FindFirstChild("Gun") then
+			murdName.Character:FindFirstChild("HumanoidRootPart").Transparency = 0
+			murdName.Character:FindFirstChild("HumanoidRootPart").Size *= 3
 		end
 	end
 	
@@ -77,6 +92,12 @@ textButton.MouseButton1Click:Connect(function()
 			PlayerNameSheriff.Text = sherName.Name
 			local icon = players:GetUserThumbnailAsync(sherName.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
 			imageSheriff.Image = icon
+		end
+	end
+	
+	for _, drop in pairs(workspace:GetChildren()) do
+		if drop.Name == "GunDrop" then
+			lPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = drop.CFrame
 		end
 	end
 end)
