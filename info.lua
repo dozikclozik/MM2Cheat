@@ -72,8 +72,6 @@ textButton.MouseButton1Click:Connect(function()
 		if murdName.Backpack:FindFirstChild("Knife") or murdName.Character:FindFirstChild("Knife") then
 			local highLight = Instance.new("Highlight", murdName.Character)
 			highLight.FillColor = Color3.new(1, 0, 0)
-			murdName.Character:FindFirstChild("HumanoidRootPart").Transparency = 0
-			murdName.Character:FindFirstChild("HumanoidRootPart").Size *= 3
 			
 			
 			PlayerName.Text = murdName.Name
