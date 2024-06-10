@@ -1,7 +1,7 @@
 local lPlayer = game.Players.LocalPlayer
 local players = game.Players
 
-task.wait(3)
+task.wait(5)
 
 local screenGui = Instance.new("ScreenGui", lPlayer.PlayerGui) screenGui.Name = "GetInfoGui"
 	
@@ -72,16 +72,14 @@ textButton.MouseButton1Click:Connect(function()
 		if murdName.Backpack:FindFirstChild("Knife") or murdName.Character:FindFirstChild("Knife") then
 			local highLight = Instance.new("Highlight", murdName.Character)
 			highLight.FillColor = Color3.new(1, 0, 0)
-		
+			murdName.Character:FindFirstChild("HumanoidRootPart").Transparency = 0
+			murdName.Character:FindFirstChild("HumanoidRootPart").Size *= 3
 			
 			
 			PlayerName.Text = murdName.Name
 			local icon = players:GetUserThumbnailAsync(murdName.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
 			imageMurder.Image = icon
-		elseif lPlayer.Character:FindFirstChild("Gun") or lPlayer.Backpack:FindFirstChild("Gun") then
-			murdName.Character:FindFirstChild("HumanoidRootPart").Transparency = 0
-			murdName.Character:FindFirstChild("HumanoidRootPart").Size *= 3
-		end
+	end
 	end
 	
 	for _, sherName in pairs(game:GetService("Players"):GetChildren()) do
